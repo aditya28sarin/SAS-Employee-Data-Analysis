@@ -1,11 +1,11 @@
-%let path=D:\btech_c3_19_20;
+%let path=*Enter Path*;
 options validvarname=v7;
 
-libname c1 pcfiles path="&path\c046_c058_c045.xlsx";
+libname c1 pcfiles path="&path\*File Name*";
 
-title 'SAS PROJECT 1';
-title2 'Presented by C058 C046 C045';
-title3 'EMPLOYEE DETAILS'; 
+title 'SAS Analysis 1';
+
+title2 'EMPLOYEE DETAILS'; 
 
 
 
@@ -112,7 +112,7 @@ run;
 title5;
 
 footnote1 'SAS PROJECT 1';
-footnote2 'Presented by C058 C046 C045';
-footnote3 'EMPLOYEE DETAILS'; 
+
+footnote3 'EMPLOYEE Analysis'; 
 
 

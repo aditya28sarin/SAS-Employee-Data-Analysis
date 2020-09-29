@@ -1,11 +1,11 @@
-title1 'SAS PROJECT 2';
-title2 'C045 c046 c058';
+title1 'Employee Analysis 2';
 
-proc contents data= c3._all_ varnum;
+
+proc contents data= *Enter directory for data*;
 run;
 
 data work.subset;
-infile "D:\btech_c3_19_20\proj2_c046_c058_c045(1).txt" dlm=',';
+infile "*Add path*" dlm=',';
 input Rep: $10. Item:$10. Orderdate:ddmmyy8.  Cost:8.2 Quantity:3. ;
 do i=1 to 43;
 Total=0;
@@ -91,5 +91,6 @@ run;
 proc freq data=sorted;
 tables Item;
 run;
-footnote1 'SAS PROJECT 2';
-footnote2 'C045 c046 c058';
+
+footnote1 'Employee Analysis 2';
+
