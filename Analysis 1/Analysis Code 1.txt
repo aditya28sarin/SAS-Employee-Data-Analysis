@@ -1,0 +1,118 @@
+%let path=D:\btech_c3_19_20;
+options validvarname=v7;
+
+libname c1 pcfiles path="&path\c046_c058_c045.xlsx";
+
+title 'SAS PROJECT 1';
+title2 'Presented by C058 C046 C045';
+title3 'EMPLOYEE DETAILS'; 
+
+
+
+proc sort data=c1.'sheet2$'n
+	out=work.sorted;
+  by Department;
+run;
+
+
+
+data     work.excel1(drop=F14 RecordDate Salary Gender)
+		 work.excel2(drop=F14 RecordDate Salary Gender);
+
+		
+		 set work.sorted;
+
+	Wing=scan(BUSINESS_UNIT,1);
+	Designation=CATX('      ',Job_Title,BUSINESS_UNIT);
+	Bonus=CEIL(Salary+0.1*Salary);
+	
+	InitialSalary=put(Salary,dollar15.1);
+	Total_Salary=bonus+Salary;
+	if Gender='F' then EmployeeGender='Female';
+	else if Gender='M' then EmployeeGender='Male';
+	Gender_Initial=SUBSTR(EmployeeGender,1,1);
+	if BUSINESS_UNIT='HEAD OFFICE' then output excel1;
+	else if BUSINESS_UNIT='HEAD STORES' then output excel2;
+
+	by Department;
+	if First.Department then deptSal=0;
+	deptSal+Salary;
+	
+	
+	run;
+
+proc format;
+	value tiers
+				low-<20000000='Tier 1'
+				20000000-<40000000='Tier 2'
+				40000000-high='Tier 3';
+				run;
+
+
+proc print data= work.excel1 noobs split=' ';
+label Length_of_Service='Experience'
+		EmployeeID='Employee ID'
+		BirthDate='Date of Birth'
+		Job_Title='Job Title'
+		STATUS='Status'
+		BUSINESS_UNIT='Business Unit'
+		Gender_Initial='Gender Initial'
+		deptSal='Department Salary'
+		Total_Salary='Total Salary';
+		sum deptSal;
+		where BirthDate ne .;
+format BirthDate ddmmyy.
+	   Bonus Total_Salary dollar15.2
+		deptSal tiers.;
+		
+run;
+
+proc print data=excel2 noobs;
+label Length_of_Service='Experience'
+		EmployeeID='Employee ID'
+		BirthDate='Date of Birth'
+		Job_Title='Job Title'
+		STATUS='Status'
+		BUSINESS_UNIT='Business Unit'
+		Gender_Initial='Gender Initial'
+		deptSal='Department Salary'
+		Total_Salary='Total Salary';
+		sum deptSal;
+		where BirthDate ne .;
+format BirthDate ddmmyy.
+	   Bonus Total_Salary dollar15.2
+		deptSal tiers.;
+		
+run;
+title4 'For Employess Below Age 48';
+
+proc print data=excel1 noobs;
+id EmployeeID;
+where Age<48;
+sum Total_Salary;
+format BirthDate ddmmyy.
+	   Bonus Total_Salary dollar15.2
+		deptSal tiers.;;
+		
+
+run;
+title4;
+
+title5 'For Employess Above Age 48';
+proc print data=excel1 noobs;
+id EmployeeID;
+where Age>48;
+sum Total_salary;
+format BirthDate ddmmyy.
+	   Bonus Total_Salary dollar15.2
+		deptSal tiers.;
+		
+
+run;
+title5;
+
+footnote1 'SAS PROJECT 1';
+footnote2 'Presented by C058 C046 C045';
+footnote3 'EMPLOYEE DETAILS'; 
+
+

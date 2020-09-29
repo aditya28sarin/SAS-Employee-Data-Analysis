@@ -1,0 +1,18 @@
+1.	Displaying in an organized table of the list of employees according to the department they are in.
+
+2.	Segregated the employees on the basis of their business designation, either head office or head stores and created two separate data sheets.
+
+3.	After segregating the employees used the ‘SCAN’ function which picks the first word out of the two word ‘BUSINESS_UNIT’ column. This is done to easily tell the user if that employee is at a HEAD position or not.
+
+4.	Used ‘CATX’ which the concatenates the Job_Title column and the BUSINESS_UNIT column displaying the entire employee details under one column.
+
+5.	Used segregate the employees according to their gender, Male or Female.
+
+6.	Applied ‘CEIL’ function which upconverts the Bonus to the nearest integer.
+
+7.	Used ‘PUT’ function to convert the numeric value into a character string and giving an output of Salary.
+
+8.	Created format and segregated the employees according to their salaries in a Tier format.
+
+9.	Finally also displayed the employees with age below 48 and above 48 separately to conclude from our results that employees above 48 are at a higher position on an average as
+	 compared to their counterparts and have a higher total salary but the bonus mark for each is higher for a younger employee (based on performance) indicating a greater scope for improvement in the future. 

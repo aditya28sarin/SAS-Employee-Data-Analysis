@@ -1,0 +1,95 @@
+title1 'SAS PROJECT 2';
+title2 'C045 c046 c058';
+
+proc contents data= c3._all_ varnum;
+run;
+
+data work.subset;
+infile "D:\btech_c3_19_20\proj2_c046_c058_c045(1).txt" dlm=',';
+input Rep: $10. Item:$10. Orderdate:ddmmyy8.  Cost:8.2 Quantity:3. ;
+do i=1 to 43;
+Total=0;
+Total+(Quantity*Cost);
+end;
+if Item='Pen' then 
+Increase=50.0;
+else if Item='Pen Set' then
+Increase=43.0;
+else if Item='Binder' then
+Increase=22.0;
+else if Pencil='Pencil' then 
+Increase=15.0;
+else if others then 
+Increase=11.0;
+length Rep $10. Item $10. Cost 8.2 Quantity 3. ;
+keep Rep Item OrderDate Cost Quantity Total Increase;
+run;
+
+proc print data=subset noobs label;
+label 'Rep'='Name'
+'OrderDate'='Order Date';
+run;
+title1;
+title2;
+
+title3 'Desk Details';
+proc print data=subset noobs;
+where  Item eq 'Desk';
+sum(Cost);
+sum(Quantity);
+sum(Total);
+run;
+
+title3;
+
+title4 'Pencil Details';
+proc print data=subset noobs;
+where  Item eq 'Pencil';
+sum(Cost);
+sum(Quantity);
+sum(Total);
+run;
+
+title4;
+
+title5 'Binder Details';
+proc print data=subset noobs;
+where  Item eq 'Binder';
+sum(Cost);
+sum(Quantity);
+sum(Total);
+run;
+
+title5;
+
+title6 'Pen Set Details';
+proc print data=subset noobs;
+where  Item eq 'Pen Set';
+sum(Cost);
+sum(Quantity);
+sum(Total);
+run;
+
+title6;
+
+
+title7 'Pen Details';
+
+proc print data=subset noobs;
+where  Item eq 'Pen';
+sum(Cost);
+sum(Quantity);
+sum(Total);
+run;
+
+title7;
+
+proc sort data=subset
+	out=sorted;
+	by Total;
+run;
+proc freq data=sorted;
+tables Item;
+run;
+footnote1 'SAS PROJECT 2';
+footnote2 'C045 c046 c058';

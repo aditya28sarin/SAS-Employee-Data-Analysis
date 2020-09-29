@@ -1,0 +1,26 @@
+1. 	Two dataset has been created and sorted.
+
+2. 	The 1st sorting is done with respect to departments with accounting department being on the top.
+
+3.	From the 1st sorting record date, salary and gender have been dropped.
+
+4. 	Concatenation of job title and department is done, with accounting clerk and head office being the 1st one.
+
+5.	The statement ceil is used to round off the bonus to the highest value, with maximum bonus accounting to $57,721,077.
+
+6.	The outputs are further divided into tiers with respect to the salary    low-<20000000='Tier 1'
+				                      
+							 20000000-<40000000='Tier2'
+				                         40000000-high='Tier 3'
+						With the salary of 40000000 being maximum.
+
+7.	The total salary is added together to have total initial salary equal to $164,076,525.80
+
+
+8.	The 2nd sorting is done with respect to Head office and the age of the employees (i.e. above 48).
+
+9.	From the 1st sorting record date, salary and gender have been dropped.
+
+10.	Concatenation of job title and department is done, with accounting clerk and head office being the 1st one.
+
+11.	Again the salary is divided into tiers and the total salary is added together to have total initial salary equal to $27,040,848,067.80

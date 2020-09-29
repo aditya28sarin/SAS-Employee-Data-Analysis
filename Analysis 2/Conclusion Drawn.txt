@@ -1,0 +1,11 @@
+1.	Initially displayed all the contents with proc contents statement.
+
+2.	Used  a do while loop which runs through the entire data set and then uses two variables Quantity and Cost and then gives us the Total for each product.
+
+3.	Used an if else loop which gives the respective hike in prices for each product over the years.
+
+4.	By using the length function define the length of each variable.
+
+5.	Calculated separately the no of items, price & total for each sub category in the item list.
+
+6.	Finally sorted the entire data set and used proc freq to give a calculative percentage of each item used.
